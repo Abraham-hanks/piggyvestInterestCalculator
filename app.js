@@ -1,8 +1,9 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
 
 const authRoutes = require('./routes/authRoute');
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
