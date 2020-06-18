@@ -1,18 +1,16 @@
 module.exports = {
     simpleInterest: (req, res)=>{
-        const principal = req.body.principal;
-        const time = req.body.time;
-        const rate = req.body.rate; 
+        let principal = parseFloat(req.body.principal);
+        const time = parseFloat(req.body.time);
+        const rate = parseFloat(req.body.rate); 
         if (!principal || !time || !rate) {
-            res.status(400).send({
+            return res.status(400).send({
                 status: false,
                 message: 'All fields required'
             })
         }
-        parseFloat(principal);
-        parseFloat(time);
-        parseFloat(rate);
         if (typeof(time)!= "number" || typeof(rate)!= "number" || typeof(principal)!= "number" ) {
+            console.log('gets here',typeof(time), typeof(rate), typeof(principal) )
             return res.status(400).send({
                 status: false,
                 message: 'All fields must be a number'
