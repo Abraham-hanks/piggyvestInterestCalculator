@@ -9,9 +9,16 @@ module.exports = {
                 message: 'All fields required'
             })
         }
+        parseFloat(principal);
+        parseFloat(time);
+        parseFloat(rate);
+        if (typeof(time)!= "number" || typeof(rate)!= "number" || typeof(principal)!= "number" ) {
+            return res.status(400).send({
+                status: false,
+                message: 'All fields must be a number'
+            })
+        }
         try {
-            parseFloat(principal);
-            parseFloat(time);
             let interest = (principal * time * rate)/100;
             let amount = principal + interest;
             return res.status(200).send({
