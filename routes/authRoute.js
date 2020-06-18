@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const interest = require('../controllers/interestController')
 
+router.route('/').post(interest.simpleInterest);
 router.route('/piggybank').post(interest.piggyBankInterest);
 router.route('/safelock').post(interest.safeLockInterest);
 router.route('/target').post(interest.targetInterest);
